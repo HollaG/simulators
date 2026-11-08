@@ -1,5 +1,7 @@
 # Yamaha STAGEPAS 400i
 
+**[Open the live simulator](https://hollag.github.io/simulators/yamaha-stagepas400i/)**
+
 A browser practice version of the 400i powered mixer, built from the supplied
 Yamaha owner's manual and rear-panel photo. Includes all six strips, clickable
 connections, real Web Audio signals, meters, EQ, four approximate reverb families,

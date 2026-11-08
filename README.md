@@ -10,7 +10,7 @@ physical controls, and rehearse with built-in sources or your own local media.
 | Practice library     | [All simulators](https://hollag.github.io/simulators/)                      | [Landing page](apps/landing)                  |
 | Mackie ProFX22v3     | [Open simulator](https://hollag.github.io/simulators/mackie-profx22v3/)     | [Audio mixer](apps/mackie-profx22v3)          |
 | CineTreak Mixer Plus | [Open simulator](https://hollag.github.io/simulators/cinetreak-mixer-plus/) | [Video mixer](apps/cinetreak-mixer-plus)      |
-| Yamaha STAGEPAS 400i | Local: `/yamaha-stagepas400i/`                                              | [Portable PA mixer](apps/yamaha-stagepas400i) |
+| Yamaha STAGEPAS 400i | [Open simulator](https://hollag.github.io/simulators/yamaha-stagepas400i/)                                              | [Portable PA mixer](apps/yamaha-stagepas400i) |
 
 ## Run locally
 
