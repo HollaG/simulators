@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("landing connects both desks and the published skill through the same shell", async ({
+test("landing connects the original desks and the published skill through the same shell", async ({
   page,
   request,
 }) => {
@@ -95,7 +95,84 @@ test("landing connects both desks and the published skill through the same shell
   expect(errors).toEqual([]);
 });
 
-for (const path of ["", "mackie-profx22v3/", "cinetreak-mixer-plus/"]) {
+test("STAGEPAS opens from the library with real meters, manual and preserved controls", async ({
+  page,
+  request,
+}) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("response", (response) => {
+    if (response.url().includes("127.0.0.1:4173") && response.status() >= 400)
+      errors.push(`${response.status()} ${response.url()}`);
+  });
+  await page.goto("./");
+  await page
+    .getByRole("link", {
+      name: "Open YAMAHA STAGEPAS 400i simulator",
+      exact: true,
+    })
+    .click();
+  await expect(page).toHaveURL(/\/simulators\/yamaha-stagepas400i\/$/);
+  await expect(
+    page.getByRole("heading", { name: "STAGEPAS 400i", exact: true }),
+  ).toBeVisible();
+  expect(
+    await page
+      .locator(".sp-panel > img")
+      .evaluate((img: HTMLImageElement) => img.naturalWidth),
+  ).toBe(2430);
+  const manual = await request.get("yamaha-stagepas400i/manual.pdf");
+  expect(manual.ok()).toBe(true);
+  expect((await manual.body()).subarray(0, 5).toString()).toBe("%PDF-");
+  await page
+    .getByRole("button", { name: "Load demo band", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Start audio", exact: true }).click();
+  await expect
+    .poll(() =>
+      page
+        .getByLabel("SPEAKERS measured level", { exact: true })
+        .evaluate((meter: HTMLMeterElement) => meter.value),
+    )
+    .toBeGreaterThan(-50);
+  const level = page.getByRole("slider", { name: "CH 1 LEVEL", exact: true });
+  await expect(level).toHaveAttribute("aria-valuenow", "6");
+  await page.getByRole("button", { name: "Split view", exact: true }).click();
+  await expect(
+    page.getByTitle("Yamaha STAGEPAS 400i PDF manual", { exact: true }),
+  ).toBeVisible();
+  await expect(level).toHaveAttribute("aria-valuenow", "6");
+  await expect(
+    page.getByRole("button", { name: "Stop audio", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Close manual", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Split view", exact: true }),
+  ).toBeFocused();
+  await expect
+    .poll(() =>
+      page.evaluate(() => localStorage.getItem("stagepas400i-session-v1")),
+    )
+    .toContain('"level":6');
+  await page.reload();
+  await expect(level).toHaveAttribute("aria-valuenow", "6");
+  await expect(
+    page.getByRole("button", { name: "Mixer power", exact: true }),
+  ).toHaveAttribute("aria-pressed", "false");
+  expect(await page.evaluate(() => "__stagepas" in window)).toBe(false);
+  await page
+    .getByRole("link", { name: "Practice desk home", exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/simulators\/$/);
+  expect(errors).toEqual([]);
+});
+
+for (const path of [
+  "",
+  "mackie-profx22v3/",
+  "cinetreak-mixer-plus/",
+  "yamaha-stagepas400i/",
+]) {
   test(`consistent header/footer, readable layout and working navigation on ${path || "landing"}`, async ({
     page,
   }) => {

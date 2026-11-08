@@ -27,9 +27,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v6
       - run: npm ci
-      - name: Test both simulator engines
+      - name: Test simulator engines
         run: npm test
-      - name: Build all three pages
+      - name: Build the library and simulators
         run: npm run build
         env:
           SITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/

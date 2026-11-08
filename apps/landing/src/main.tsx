@@ -15,6 +15,25 @@ import "./style.css";
 const base = import.meta.env.BASE_URL;
 const simulators = [
   {
+    slug: "yamaha-stagepas400i",
+    number: "03",
+    name: "STAGEPAS 400i",
+    brand: "YAMAHA",
+    type: "PORTABLE PA",
+    image: "stagepas.webp",
+    className: "stagepas",
+    Icon: AudioLines,
+    description:
+      "Start small. Balance a band, add a little reverb, and get comfortable with your portable PA.",
+    features: [
+      "Mic & line inputs",
+      "Two-band EQ",
+      "SPX-style reverb",
+      "Monitor & sub outputs",
+    ],
+    detail: "8 inputs · 6 control strips",
+  },
+  {
     slug: "mackie-profx22v3",
     number: "01",
     name: "ProFX22v3",
@@ -105,7 +124,7 @@ function Landing() {
               <h2 id="library-title">Pick a desk. Make it familiar.</h2>
             </div>
             <span className="library-count">
-              02 SIMULATORS <i />
+              {String(simulators.length).padStart(2, "0")} SIMULATORS <i />
             </span>
           </div>
           <div className="simulator-grid">

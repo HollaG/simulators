@@ -12,7 +12,7 @@
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
     "test": "npm run test --workspaces --if-present",
-    "test:browser": "npm run test:browser --workspace=mackie-profx22-simulator && npm run test:browser --workspace=mixer-plus-simulator && playwright test",
+    "test:browser": "npm run test:browser --workspace=mackie-profx22-simulator && npm run test:browser --workspace=mixer-plus-simulator && npm run test:browser --workspace=stagepas400i-simulator && playwright test",
     "test:site": "playwright test"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ const apps = [
   ["landing", 5300, "/"],
   ["mackie-profx22v3", 5301, "/mackie-profx22v3/"],
   ["cinetreak-mixer-plus", 5302, "/cinetreak-mixer-plus/"],
+  ["yamaha-stagepas400i", 5303, "/yamaha-stagepas400i/"],
 ];
 let stopping = false;
 const stop = () => {
@@ -16,8 +17,8 @@ const stop = () => {
   stopping = true;
   for (const child of children) child.kill();
 };
-// The landing server proxies both simulator paths. Direct Vite processes make
-// Ctrl+C stop all three servers reliably without leaving npm grandchildren.
+// The landing server proxies each simulator path. Direct Vite processes make
+// Ctrl+C stop all servers reliably without leaving npm grandchildren.
 for (const [app, port, base] of apps) {
   const cwd = join(root, "apps", app);
   const require = createRequire(join(cwd, "package.json"));

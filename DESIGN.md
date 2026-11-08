@@ -1,8 +1,9 @@
 # practicedesk collection
 
-Three static pages are built from independent npm workspaces: the practice library
+Four static pages are built from independent npm workspaces: the practice library
 at `/simulators/`, Mackie at `/simulators/mackie-profx22v3/`, and CineTreak at
-`/simulators/cinetreak-mixer-plus/`. Native links and directory indexes support
+`/simulators/cinetreak-mixer-plus/`, and Yamaha at `/simulators/yamaha-stagepas400i/`.
+Native links and directory indexes support
 direct visits, refresh and browser history on GitHub Pages without an SPA router.
 
 Both apps retain their original engines, controls, calibration, media handling,
@@ -11,11 +12,11 @@ CineTreak IndexedDB database stay separate. Uploaded media stays in the browser.
 The new origin paths do not migrate media or settings from the old sites.
 
 `packages/ui` contains the single header and footer implementation used by all
-three pages. Their branding, spacing, navigation and content are consistent;
+four pages. Their branding, spacing, navigation and content are consistent;
 the current page gets an active navigation state. Page-specific help, sources
 and reset controls stay in each simulator's practice area. The shared shell accepts a colour theme without changing its layout or content.
-The Mackie and library pages use the light green theme; the video desk uses a
-dark mint theme throughout, including its header and footer.
+The Mackie and library pages use the light green theme; the video and STAGEPAS
+desks use a dark mint theme throughout, including their headers and footers.
 
 Each simulator supplies its own manual metadata and a public `manual.pdf`. The
 shared shell offers an optional split layout and a new-tab PDF link. The manual
@@ -36,6 +37,12 @@ static outputs into `dist/`, and copies the skill. `VITE_BASE_PATH` controls eac
 app's asset directory; `VITE_SITE_BASE` points shared navigation at the collection
 root. GitHub Actions derives the root from Pages metadata. The development hub
 proxies the simulator servers, so the same navigation works locally.
+
+The STAGEPAS workspace adds a photo-based analog PA desk, its own reducer/audio
+graph and versioned storage key. Its manual and photo come from the supplied 400i
+references. Source-jack priority, additive USB, independent monitoring and the
+subwoofer crossover follow that manual. DSP and analog curves are provisional;
+see `apps/yamaha-stagepas400i/DESIGN.md` for its contract and accuracy limits.
 
 Validation keeps each engine's logic and browser tests, plus production tests for
 cross-page navigation, live Mackie audio meters, CineTreak CUT/LCD output,
