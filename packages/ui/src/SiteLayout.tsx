@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import "./style.css";
 
 export type SitePage = "home" | "mackie" | "cinetreak";
@@ -11,14 +11,22 @@ export function SiteLayout({
   page,
   base = "/",
   theme = "light",
+  manual,
   children,
 }: {
   page: SitePage;
   base?: string;
   theme?: "light" | "dark";
+  manual?: { title: string; url: string };
   children: ReactNode;
 }) {
   const root = `${base.replace(/\/+$/, "")}/`;
+  const [split, setSplit] = useState(false);
+  const splitButton = useRef<HTMLButtonElement>(null);
+  const closeManual = () => {
+    setSplit(false);
+    splitButton.current?.focus();
+  };
   return (
     <div className="pd-site" data-theme={theme}>
       <a className="pd-skip" href="#practice-content">
@@ -69,7 +77,78 @@ export function SiteLayout({
         </nav>
       </header>
       <div className="pd-content" id="practice-content">
-        {children}
+        {manual && (
+          <div className="pd-manual-tools">
+            <span className="pd-manual-label">
+              OWNER’S MANUAL <strong>{manual.title}</strong>
+            </span>
+            <div>
+              <button
+                ref={splitButton}
+                type="button"
+                className="pd-manual-button"
+                aria-pressed={split}
+                aria-controls="pd-manual"
+                onClick={() => setSplit((value) => !value)}
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                >
+                  <rect x="2" y="3" width="16" height="14" rx="2" />
+                  <path d="M11 3v14" />
+                </svg>
+                Split view
+              </button>
+              <a
+                className="pd-manual-button"
+                href={manual.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open PDF in new tab <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        )}
+        <div className="pd-workspace" data-split={split}>
+          {/* Keep this subtree mounted while changing layout: audio, video and desk state continue. */}
+          <div className="pd-simulator-pane">{children}</div>
+          {manual && (
+            <aside
+              className="pd-manual"
+              id="pd-manual"
+              aria-label={`${manual.title} manual`}
+              hidden={!split}
+            >
+              <div className="pd-manual-heading">
+                <span>
+                  {manual.title} <small>OWNER’S MANUAL</small>
+                </span>
+                <button
+                  type="button"
+                  aria-label="Close manual"
+                  onClick={closeManual}
+                >
+                  ×
+                </button>
+              </div>
+              {split && (
+                <iframe
+                  title={`${manual.title} PDF manual`}
+                  src={`${manual.url}#view=FitH`}
+                />
+              )}
+              <p className="pd-manual-tip">
+                Use the PDF toolbar to search or change pages. You can also open
+                the PDF in a new tab.
+              </p>
+            </aside>
+          )}
+        </div>
       </div>
       <footer className="pd-footer">
         <span>

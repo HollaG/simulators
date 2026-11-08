@@ -1705,3 +1705,69 @@ kbd {
     animation: none;
   }
 }
+
+/* Split view responds to the desk pane width, not the full browser width. */
+@container pd-simulator (max-width: 920px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .inspector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .inspector-heading {
+    grid-column: 1/-1;
+  }
+  .channel-heading {
+    grid-column: 1/-1;
+  }
+  .source-section {
+    grid-column: 1;
+    grid-row: 3/5;
+    height: 100%;
+    border-right: 1px solid var(--line);
+  }
+  .channel-settings {
+    grid-column: 2;
+    grid-row: 3/5;
+  }
+  .fx-inspector {
+    grid-column: 1;
+  }
+  .extra-settings {
+    grid-column: 2;
+  }
+  .audio-dock {
+    flex-wrap: wrap;
+  }
+  .listen-meter {
+    min-width: 100px;
+  }
+  .listening-volume {
+    min-width: 150px;
+  }
+  .transport-status {
+    min-width: 170px;
+  }
+  .page-heading {
+    gap: 14px;
+  }
+  .heading-actions {
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 0;
+  }
+  .heading-actions .button {
+    padding: 8px 10px;
+  }
+  .console-scroll {
+    max-height: 85vh;
+  }
+  .console-hint {
+    font-size: 9px;
+  }
+  .channel-tape {
+    gap: 5px;
+  }
+}

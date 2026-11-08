@@ -36,6 +36,12 @@ scripts/                  Development, build and static preview
 Each simulator keeps its own state, engine, assets, tests and package versions.
 The shared UI provides consistent branding and navigation across all three pages.
 See the app READMEs for practice sequences and device-specific accuracy limits.
+
+Both simulators have a **Split view** button above the desk to show the owner's
+manual alongside it. **Open PDF in new tab** opens the same manual separately.
+Closing the manual restores the full-width desk without resetting it. On narrow
+screens, the PDF stacks above the simulator. PDF display uses the browser's
+built-in reader; the new-tab link is available if inline viewing is unsupported.
 The original projects are [Mackie](https://github.com/HollaG/simulator-mackie-profx22v3)
 and [CineTreak](https://github.com/HollaG/simulator-cinetreak-mixer-plus).
 

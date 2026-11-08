@@ -17,6 +17,15 @@ and reset controls stay in each simulator's practice area. The shared shell acce
 The Mackie and library pages use the light green theme; the video desk uses a
 dark mint theme throughout, including its header and footer.
 
+Each simulator supplies its own manual metadata and a public `manual.pdf`. The
+shared shell offers an optional split layout and a new-tab PDF link. The manual
+uses the browser's PDF reader; no PDF library or worker is required. Desktop
+places the PDF beside the desk, with a sticky reader; small screens stack it
+above the desk. Only the iframe is mounted/unmounted when toggling, so the desk's
+audio/video resources and configuration continue. Closing returns focus to the
+split button. This view preference is transient. Simulator keyboard shortcuts
+exclude the manual tools and reader.
+
 The landing page links every simulator and the published `skill/` source. It uses
 the real panel images already supplied for the simulators. The full local skill
 is copied as a distributable snapshot, including its references, UI metadata and

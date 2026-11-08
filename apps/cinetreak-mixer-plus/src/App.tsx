@@ -101,7 +101,7 @@ export default function App() {
     const keydown = (e: KeyboardEvent) => {
       // Shared site navigation keeps normal link keyboard behaviour; desk
       // shortcuts only apply while interacting with the practice area.
-      if (e.target instanceof Element && e.target.closest('.pd-header, .pd-footer, .pd-skip')) return;
+      if (e.target instanceof Element && e.target.closest('.pd-header, .pd-footer, .pd-skip, .pd-manual-tools, .pd-manual')) return;
       if (panel || e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.target instanceof HTMLButtonElement && [' ', 'Enter'].includes(e.key)) return;
       if (e.ctrlKey || e.metaKey || e.altKey) return;
