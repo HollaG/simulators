@@ -46,7 +46,12 @@ export default function App() {
       if (!alive) return;
       const time = now(), state = stateRef.current;
       // GPU/audio objects stay outside React. State only receives input changes and operation completion.
-      if (time - paintedAt >= 30 || time < paintedAt || fixedTime.current !== null) {
+      // A frozen test clock needs one frame per state/time change. Repainting
+      // identical frames continuously starves browser input on software WebGL.
+      const shouldPaint = fixedTime.current === null
+        ? time - paintedAt >= 30 || time < paintedAt
+        : state !== renderedState || time !== renderedTime;
+      if (shouldPaint) {
         const dt = Math.max(0, Math.min(.1, (time - last) / 1000)); last = time; paintedAt = time;
         const m = movement.current;
         if (m.x || m.y || m.zoom) dispatch({ type: 'MOVE', ...m, dt, now: time });
