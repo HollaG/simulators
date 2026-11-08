@@ -49,7 +49,7 @@ for (const [slug, title] of [
     await expect(manual).toBeVisible();
     await expect(
       page.getByTitle(`${title} PDF manual`, { exact: true }),
-    ).toHaveAttribute("src", `${url}#view=FitH`);
+    ).toHaveAttribute("src", `${url}#view=FitH&navpanes=0`);
     const deskBox = (await page.locator(".pd-simulator-pane").boundingBox())!;
     const pdfBox = (await manual.boundingBox())!;
     expect(pdfBox.x).toBeGreaterThanOrEqual(deskBox.x + deskBox.width - 1);

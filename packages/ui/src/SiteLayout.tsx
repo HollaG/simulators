@@ -139,7 +139,7 @@ export function SiteLayout({
               {split && (
                 <iframe
                   title={`${manual.title} PDF manual`}
-                  src={`${manual.url}#view=FitH`}
+                  src={`${manual.url}#view=FitH&navpanes=0`}
                 />
               )}
               <p className="pd-manual-tip">
