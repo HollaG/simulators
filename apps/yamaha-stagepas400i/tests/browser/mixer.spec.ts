@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import type { MixerState } from "../../src/state";
 import type { Readings } from "../../src/audio";
 
-type Bridge = { state: MixerState; read: () => Readings };
+type Bridge = { state: MixerState; audioTime: number; read: () => Readings };
 const read = (page: Page) =>
   page.evaluate(() =>
     (window as unknown as { __stagepas: Bridge }).__stagepas.read(),
@@ -29,6 +29,11 @@ async function simpleTone(page: Page, kind = "tone") {
   await knob(page, "MONITOR OUT", 7);
   await page.getByRole("button", { name: "Mixer power", exact: true }).click();
   await page.getByRole("button", { name: "Start audio", exact: true }).click();
+  // A first nonzero block can still include compressor start-up and an incomplete
+  // analyser window. Wait on the real audio clock before taking reference levels.
+  await expect.poll(() => page.evaluate(
+    () => (window as unknown as { __stagepas: Bridge }).__stagepas.audioTime,
+  )).toBeGreaterThan(0.35);
   await expect
     .poll(async () => (await read(page)).speakers)
     .toBeGreaterThan(-30);

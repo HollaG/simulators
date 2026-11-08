@@ -145,6 +145,9 @@ export default function App() {
       get state() {
         return stateRef.current;
       },
+      get audioTime() {
+        return engine.current?.context.currentTime || 0;
+      },
       read: () => engine.current?.read() || emptyReadings(),
     };
     return () => {
