@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hardware Simulator Builder"
+  short_description: "Build practice consoles from manuals and photos"
+  default_prompt: "Use $hardware-simulator to turn this device manual and panel image into a working browser practice simulator."

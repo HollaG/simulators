@@ -1,0 +1,25 @@
+{
+  "name": "practicedesk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test": "npm run test --workspaces --if-present",
+    "test:browser": "npm run test:browser --workspace=mackie-profx22-simulator && npm run test:browser --workspace=mixer-plus-simulator && playwright test",
+    "test:site": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^24.0.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

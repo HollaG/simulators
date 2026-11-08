@@ -1,0 +1,13 @@
+{
+  "name": "@practicedesk/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/SiteLayout.tsx",
+    "./style.css": "./src/style.css"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}
