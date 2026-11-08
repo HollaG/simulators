@@ -13,8 +13,9 @@ The new origin paths do not migrate media or settings from the old sites.
 `packages/ui` contains the single header and footer implementation used by all
 three pages. Their branding, spacing, navigation and content are consistent;
 the current page gets an active navigation state. Page-specific help, sources
-and reset controls stay in each simulator's practice area. The Mackie and library
-pages use the light green theme; the video desk retains its dark mint theme.
+and reset controls stay in each simulator's practice area. The shared shell accepts a colour theme without changing its layout or content.
+The Mackie and library pages use the light green theme; the video desk uses a
+dark mint theme throughout, including its header and footer.
 
 The landing page links every simulator and the published `skill/` source. It uses
 the real panel images already supplied for the simulators. The full local skill

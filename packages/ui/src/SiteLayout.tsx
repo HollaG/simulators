@@ -10,15 +10,17 @@ export const SOURCE_URL = "https://github.com/HollaG/simulators";
 export function SiteLayout({
   page,
   base = "/",
+  theme = "light",
   children,
 }: {
   page: SitePage;
   base?: string;
+  theme?: "light" | "dark";
   children: ReactNode;
 }) {
   const root = `${base.replace(/\/+$/, "")}/`;
   return (
-    <div className="pd-site">
+    <div className="pd-site" data-theme={theme}>
       <a className="pd-skip" href="#practice-content">
         Skip to content
       </a>
