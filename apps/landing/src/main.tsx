@@ -15,6 +15,19 @@ import "./style.css";
 const base = import.meta.env.BASE_URL;
 const simulators = [
   {
+    slug: "yamaha-mg10xu",
+    number: "04",
+    name: "MG10XU",
+    brand: "YAMAHA",
+    type: "COMPACT AUDIO MIXER",
+    image: "mg10xu.webp",
+    className: "mg10xu",
+    Icon: AudioLines,
+    description: "Make every turn count. Set your gain, add an effect, and practise a clean USB monitoring mix.",
+    features: ["Gain & compression", "24 FX programs", "USB monitoring", "Real audio meters"],
+    detail: "10 inputs · 7 control strips",
+  },
+  {
     slug: "yamaha-stagepas400i",
     number: "03",
     name: "STAGEPAS 400i",

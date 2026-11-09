@@ -1,8 +1,9 @@
 # practicedesk collection
 
-Four static pages are built from independent npm workspaces: the practice library
+Five static pages are built from independent npm workspaces: the practice library
 at `/simulators/`, Mackie at `/simulators/mackie-profx22v3/`, and CineTreak at
-`/simulators/cinetreak-mixer-plus/`, and Yamaha at `/simulators/yamaha-stagepas400i/`.
+`/simulators/cinetreak-mixer-plus/`, Yamaha at `/simulators/yamaha-stagepas400i/`,
+and the MG10XU at `/simulators/yamaha-mg10xu/`.
 Native links and directory indexes support
 direct visits, refresh and browser history on GitHub Pages without an SPA router.
 
@@ -12,7 +13,7 @@ CineTreak IndexedDB database stay separate. Uploaded media stays in the browser.
 The new origin paths do not migrate media or settings from the old sites.
 
 `packages/ui` contains the single header and footer implementation used by all
-four pages. Their branding, spacing, navigation and content are consistent;
+five pages. Their branding, spacing, navigation and content are consistent;
 the current page gets an active navigation state. Page-specific help, sources
 and reset controls stay in each simulator's practice area. The shared shell accepts a colour theme without changing its layout or content.
 The Mackie and library pages use the light green theme; the video and STAGEPAS
@@ -50,3 +51,9 @@ restoration, shared shell content, direct reloads and responsive page widths.
 Static preview returns 404 for missing files so incorrect deployment paths cannot
 silently return the landing HTML. None of these checks establishes physical
 hardware accuracy.
+
+The MG10XU adds the owner's supplied top-panel photo and two-page manual, a
+separate reducer and Web Audio graph, all 24 approximated FX families, program
+selection/confirmation and USB monitoring/record-bus practice. It shares only the
+site shell and deployment, with its own versioned settings and session-only files.
+See `apps/yamaha-mg10xu/DESIGN.md` for its evidence and accuracy limits.

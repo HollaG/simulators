@@ -172,6 +172,7 @@ for (const path of [
   "mackie-profx22v3/",
   "cinetreak-mixer-plus/",
   "yamaha-stagepas400i/",
+  "yamaha-mg10xu/",
 ]) {
   test(`consistent header/footer, readable layout and working navigation on ${path || "landing"}`, async ({
     page,

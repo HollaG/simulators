@@ -11,6 +11,7 @@ const apps = [
   ["mackie-profx22v3", "mackie-profx22-simulator", "mackie-profx22v3/"],
   ["cinetreak-mixer-plus", "mixer-plus-simulator", "cinetreak-mixer-plus/"],
   ["yamaha-stagepas400i", "stagepas400i-simulator", "yamaha-stagepas400i/"],
+  ["yamaha-mg10xu", "mg10xu-simulator", "yamaha-mg10xu/"],
 ];
 if (!process.env.npm_execpath) throw new Error("Run this with npm run build.");
 if (dirname(output) !== root.replace(/[\\/]$/, ""))

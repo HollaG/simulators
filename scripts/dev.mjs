@@ -10,6 +10,7 @@ const apps = [
   ["mackie-profx22v3", 5301, "/mackie-profx22v3/"],
   ["cinetreak-mixer-plus", 5302, "/cinetreak-mixer-plus/"],
   ["yamaha-stagepas400i", 5303, "/yamaha-stagepas400i/"],
+  ["yamaha-mg10xu", 5304, "/yamaha-mg10xu/"],
 ];
 let stopping = false;
 const stop = () => {
