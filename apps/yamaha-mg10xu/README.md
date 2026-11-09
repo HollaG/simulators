@@ -1,5 +1,7 @@
 # Yamaha MG10XU
 
+**[Open the live simulator](https://hollag.github.io/simulators/yamaha-mg10xu/)**
+
 Interactive photo-panel practice mixer, based on the owner's supplied MG10XU
 manual (March 2024) and photo. See [DESIGN.md](DESIGN.md) for source pages,
 control contracts and provisional behaviour.

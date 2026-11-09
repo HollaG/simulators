@@ -2,6 +2,8 @@
 
 **[Open practicedesk](https://hollag.github.io/simulators/)**
 
+**[Open the live MG10XU simulator](https://hollag.github.io/simulators/yamaha-mg10xu/)**
+
 Browser practice simulators for audio and video hardware. Pick a desk, explore its
 physical controls, and rehearse with built-in sources or your own local media.
 
