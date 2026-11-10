@@ -189,6 +189,10 @@
 .pd-skip:focus {
   top: 10px;
 }
+@media (max-width: 1000px) {
+  .pd-header { height: auto; min-height: 76px; flex-wrap: wrap; padding-top: 14px; padding-bottom: 12px; }
+  .pd-nav { flex-wrap: wrap; min-width: 0; }
+}
 @media (max-width: 760px) {
   .pd-header {
     padding: 0 20px;
@@ -218,7 +222,7 @@
 }
 @media (max-width: 520px) {
   .pd-header {
-    height: 100px;
+    height: auto;
     padding: 14px 16px 10px;
     flex-wrap: wrap;
     gap: 8px;
@@ -235,7 +239,7 @@
   }
   .pd-nav {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .pd-nav a {
     padding: 5px 9px;

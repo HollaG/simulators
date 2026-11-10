@@ -1,0 +1,789 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #101b16;
+}
+.h6-app {
+  --mint: #a6e5ce;
+  --border: #2a3b36;
+  color: #e8eee9;
+  max-width: 1370px;
+  margin: auto;
+  padding: 30px 42px 44px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+.h6-app button,
+.h6-app select,
+.h6-app input {
+  font: inherit;
+}
+.h6-app button {
+  cursor: pointer;
+}
+.h6-app button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+.h6-app button:focus-visible,
+.h6-app select:focus-visible,
+.h6-app [tabindex]:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+.h6-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  margin: 0 0 30px;
+}
+.h6-eyebrow {
+  font-size: 10px;
+  color: var(--mint);
+  letter-spacing: 1.8px;
+  font-weight: 650;
+  margin: 0 0 14px;
+}
+.h6-eyebrow span {
+  color: #7b9389;
+  padding-left: 20px;
+}
+.h6-heading h1 {
+  font-size: 50px;
+  margin: 0;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+.h6-heading h1 span {
+  font-size: 36px;
+  letter-spacing: -1.8px;
+  font-weight: 500;
+}
+.h6-heading h1 + p {
+  color: #9eaea6;
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+.h6-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  font-size: 10px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 11px 15px;
+  white-space: nowrap;
+}
+.h6-status i {
+  height: 6px;
+  width: 6px;
+  background: var(--mint);
+  border-radius: 50%;
+}
+.h6-status.recording {
+  color: #ff9a94;
+}
+.h6-status.recording i {
+  background: #ff5a55;
+}
+.h6-workspace {
+  display: grid;
+  grid-template-columns: minmax(340px, 1.05fr) minmax(360px, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+.h6-device-card,
+.h6-card {
+  background: #14211d;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 21px;
+  min-width: 0;
+}
+.h6-device-card {
+  background: radial-gradient(
+    ellipse at 45% 43%,
+    #2c3730 0%,
+    #19231f 52%,
+    #14201b 80%
+  );
+}
+.h6-section-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #9bb0a4;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.h6-section-label > span + span {
+  font-size: 8px;
+  color: #6f897c;
+  letter-spacing: 0.8px;
+}
+.h6-section-label label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0;
+  font-size: 10px;
+  font-weight: 400;
+}
+.h6-section-label input {
+  accent-color: var(--mint);
+  width: 12px;
+}
+.h6-device-area {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 0 8px;
+}
+.h6-panel {
+  position: relative;
+  width: min(100%, 345px);
+  flex: 0 1 345px;
+  min-width: 0;
+  filter: drop-shadow(0 12px 15px #0008);
+}
+.h6-panel > img {
+  width: 100%;
+  display: block;
+  user-select: none;
+  clip-path: url(#h6-photo-outline);
+}
+.h6-hit {
+  position: absolute;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 20%;
+  z-index: 2;
+  touch-action: none;
+  padding: 0;
+}
+.h6-hit.rec,
+.h6-hit.play,
+.h6-hit.stop,
+.h6-hit.rew,
+.h6-hit.ff {
+  border-radius: 50%;
+}
+.h6-app .h6-hit:disabled {
+  opacity: 1;
+}
+.h6-hit:not(:disabled):hover,
+.h6-hit:focus-visible {
+  background: #b5fbd129;
+  border-color: #a6e5ce;
+}
+.h6-hit:not(:disabled):active {
+  background: #a6e5ce66;
+}
+.h6-panel.outlines .h6-hit {
+  border-color: #a6e5ce;
+  box-shadow: 0 0 0 1px #111;
+}
+.h6-led {
+  position: absolute;
+  border: 2px solid #242321;
+  border-radius: 50%;
+  background: #301f1b;
+  box-shadow: 0 0 0 2px #242422;
+  pointer-events: none;
+}
+.h6-led[data-lit="true"] {
+  background: #ff573e;
+  box-shadow: 0 0 5px #ff483b88;
+}
+.h6-panel-screen {
+  position: absolute;
+  background: #030304;
+  overflow: hidden;
+  pointer-events: none;
+}
+.h6-side-controls {
+  width: 72px;
+  flex-shrink: 0;
+  margin-bottom: 140px;
+  text-align: center;
+}
+.h6-side-caption {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #91a095;
+}
+.h6-dial {
+  background: #101413;
+  border: 1px solid #445349;
+  border-radius: 8px;
+  padding: 5px;
+  width: 48px;
+  margin: 12px auto 14px;
+}
+.h6-dial button {
+  background: none;
+  border: none;
+  color: #b5c8bc;
+  width: 100%;
+  padding: 5px 0;
+  font-size: 10px;
+}
+.h6-dial-grip {
+  height: 47px;
+  background: repeating-linear-gradient(
+    0deg,
+    #121615 0px,
+    #121615 3px,
+    #4d554f 4px,
+    #303a33 6px
+  );
+  border-radius: 4px;
+  border: 1px solid #72796d;
+  cursor: ns-resize;
+  touch-action: none;
+}
+.h6-enter {
+  background: linear-gradient(#40443f, #202723);
+  box-shadow: 0 2px 0 #030604;
+  color: #e3e7df;
+  border: 1px solid #5f665a;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 10px !important;
+}
+.h6-side-help {
+  display: block;
+  font-size: 9px;
+  line-height: 1.6;
+  color: #879b8d;
+  margin-top: 13px;
+}
+.h6-bottom-controls {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #2e3c32;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+.h6-bottom-controls > span {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #879b8d;
+  margin-right: 10px;
+}
+.h6-bottom-controls button,
+.h6-listen button,
+.h6-reset button,
+.h6-downloads button {
+  background: #203b2f;
+  border: 1px solid #416451;
+  color: #c2e8cf;
+  border-radius: 5px;
+  padding: 9px 12px;
+  font-size: 11px;
+}
+.h6-bottom-controls button[aria-pressed="true"] {
+  background: #a6e5ce;
+  color: #15231b;
+}
+.h6-panel-note {
+  text-align: center;
+  color: #87978b;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 16px 0 0;
+}
+.h6-companion {
+  display: grid;
+  gap: 16px;
+}
+.h6-large-screen {
+  max-width: 440px;
+  margin: auto;
+  aspect-ratio: 1.44;
+  padding: 12px;
+  border: 1px solid #45534b;
+  border-radius: 9px;
+  background: linear-gradient(120deg, #272c29, #0a0d0b 75%);
+  box-shadow: 0 8px 25px #0003;
+}
+.h6-display-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #b7cdbf;
+  font-size: 10px;
+  margin-top: 16px;
+}
+.h6-display-caption span + span {
+  color: #7c9687;
+  text-align: right;
+}
+.h6-message {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #b7cdbf;
+  margin: 13px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  min-height: 33px;
+}
+.h6-lcd {
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #070709;
+  color: #eeeef2;
+  overflow: hidden;
+  font-family: "Lucida Console", Consolas, monospace;
+}
+.h6-lcd.off {
+  align-items: center;
+  justify-content: center;
+  color: #323937;
+  background: #0a100e;
+}
+.h6-lcd.off > span {
+  font-size: 7cqw;
+}
+.lcd-title {
+  background: #302772;
+  padding: 1.4% 1.8%;
+  flex: 0 0 15%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 6.2cqw;
+  line-height: 1;
+}
+.lcd-title b {
+  font-weight: 400;
+}
+.lcd-title > span:not(.lcd-battery) {
+  font-size: 4.8cqw;
+}
+.lcd-battery {
+  margin-left: auto;
+  font-size: 4cqw;
+}
+.h6-lcd.recording .lcd-title b {
+  color: #ff5a56;
+}
+.h6-lcd.playing .lcd-title b {
+  color: #81df7b;
+}
+.lcd-waves {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.lcd-waves > div {
+  position: relative;
+  border-right: 1px solid #62626d;
+  border-bottom: 1px solid #62626d;
+  overflow: hidden;
+}
+.lcd-waves small {
+  font-size: 3.8cqw;
+  position: absolute;
+  z-index: 1;
+  top: 1%;
+  left: 2%;
+  color: #e0e1e8;
+  background: #302772aa;
+}
+.lcd-waves svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lcd-waves polyline {
+  fill: none;
+  stroke: #e9e9ec;
+  stroke-width: 1.5;
+}
+.h6-lcd.recording polyline {
+  stroke: #f65c63;
+}
+.h6-lcd.playing polyline {
+  stroke: #80d481;
+}
+.lcd-waves .zero {
+  stroke: #42424a;
+  stroke-width: 0.6;
+}
+.lcd-waves .muted polyline {
+  stroke: #53535c;
+}
+.lcd-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  background: #302772;
+  flex: 0 0 16%;
+  font-size: 4.3cqw;
+  gap: 1%;
+  padding: 1% 1.5%;
+}
+.lcd-menu > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border: 1px solid transparent;
+  min-width: 0;
+}
+.lcd-menu > .selected {
+  color: #121217;
+  background: #ece6ae;
+  border-radius: 2px;
+}
+.lcd-list {
+  font-size: 5.5cqw;
+  padding: 1.5%;
+  flex: 1;
+}
+.lcd-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+  padding: 1.8% 1.5%;
+  border: 1px solid transparent;
+}
+.lcd-list .selected {
+  border-color: #b5d3ea;
+  background: #3f50a3;
+}
+.lcd-hint {
+  background: #302772;
+  font-size: 3.6cqw;
+  padding: 1.5%;
+}
+.lcd-notice {
+  padding: 5%;
+  font-size: 5.1cqw;
+  line-height: 1.45;
+  flex: 1;
+}
+.lcd-notice small {
+  display: block;
+  margin-top: 8%;
+  font-size: 4cqw;
+  color: #afb3c4;
+}
+.lcd-scroll {
+  overflow: hidden;
+  flex: 1;
+}
+.lcd-scroll .lcd-list > div {
+  height: 13cqw;
+}
+.lcd-mixer {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  padding: 1.5%;
+  gap: 1%;
+}
+.lcd-strip {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #5d6071;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+}
+.lcd-strip.selected {
+  border: 1px solid #e7efff;
+  background: #202538;
+}
+.lcd-strip.editing {
+  background: #37436b;
+}
+.lcd-meter {
+  position: relative;
+  margin: 6% 15%;
+  flex: 1;
+  background: repeating-linear-gradient(to top, #222329 0 14%, #525363 14% 15%);
+  display: flex;
+  align-items: end;
+  gap: 14%;
+}
+.lcd-meter i {
+  display: block;
+  background: #e5e6f1;
+  flex: 1;
+  max-height: 100%;
+}
+.lcd-meter em {
+  position: absolute;
+  left: -15%;
+  width: 35%;
+  height: 3%;
+  min-height: 3px;
+  background: #999be5;
+  border: 1px solid white;
+  border-radius: 30%;
+}
+.lcd-strip small {
+  font-size: 3.7cqw;
+  text-align: center;
+  display: block;
+  background: #302772;
+  padding: 4% 0;
+  white-space: nowrap;
+}
+.lcd-progress {
+  height: 3%;
+  background: #373944;
+  position: relative;
+}
+.lcd-progress i {
+  background: #75d478;
+  display: block;
+  height: 100%;
+}
+.lcd-progress b {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: #ece6ae;
+}
+.h6-source {
+  display: grid;
+  grid-template-columns: 60px 1fr 45px;
+  gap: 10px;
+  align-items: center;
+  margin: 9px 0;
+}
+.h6-source b {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #abc3b6;
+}
+.h6-source select {
+  background: #0e1915;
+  color: #b9c7bf;
+  border: 1px solid #31483b;
+  border-radius: 5px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 6px;
+  font-size: 11px;
+}
+.h6-source meter {
+  width: 100%;
+  height: 8px;
+  accent-color: var(--mint);
+}
+.h6-listen {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 17px;
+  flex-wrap: wrap;
+}
+.h6-listen button {
+  flex: 1;
+  white-space: nowrap;
+}
+.h6-listen label {
+  color: #88a391;
+  font-size: 8px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.h6-listen input {
+  width: 85px;
+  accent-color: var(--mint);
+}
+.h6-fine {
+  color: #8ca194;
+  font-size: 10px;
+  line-height: 1.7;
+  margin: 14px 0 0;
+}
+.h6-empty {
+  color: #bccdc0;
+  font-size: 14px;
+  padding: 9px 0;
+}
+.h6-empty small {
+  display: block;
+  font-size: 11px;
+  color: #8a9e90;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.h6-takes {
+  max-height: 250px;
+  overflow-y: auto;
+}
+.h6-takes > div {
+  border-top: 1px solid var(--border);
+  padding: 13px 0;
+}
+.h6-takes > div:first-child {
+  border: none;
+  padding-top: 0;
+}
+.h6-takes strong {
+  font:
+    12px Consolas,
+    monospace;
+}
+.h6-takes span {
+  float: right;
+  font-size: 10px;
+  color: #91aa9a;
+}
+.h6-downloads {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.h6-downloads button {
+  padding: 5px 7px;
+  font-size: 9px;
+}
+.h6-guide {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #9fb5a7;
+}
+.h6-guide summary {
+  cursor: pointer;
+  color: #d0e0d5;
+}
+.h6-guide ol {
+  padding-left: 18px;
+}
+.h6-guide li {
+  margin: 7px 0;
+}
+.h6-reset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #809b8a;
+  font-size: 10px;
+}
+.h6-reset button {
+  background: transparent;
+  border-color: var(--border);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (max-width: 1050px) {
+  .h6-app {
+    padding: 26px 20px;
+  }
+  .h6-workspace {
+    grid-template-columns: minmax(300px, 1fr) minmax(320px, 1fr);
+    gap: 16px;
+  }
+  .h6-device-card,
+  .h6-card {
+    padding: 16px;
+  }
+  .h6-side-controls {
+    width: 58px;
+  }
+  .h6-side-help {
+    font-size: 8px;
+  }
+  .h6-side-controls {
+    margin-bottom: 95px;
+  }
+}
+@media (max-width: 740px) {
+  .h6-app {
+    padding: 24px 14px;
+  }
+  .h6-workspace {
+    grid-template-columns: 1fr;
+  }
+  .h6-heading {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .h6-heading h1 {
+    font-size: 40px;
+  }
+  .h6-heading h1 span {
+    font-size: 27px;
+  }
+  .h6-heading h1 + p {
+    font-size: 11px;
+  }
+  .h6-eyebrow {
+    font-size: 8px;
+  }
+  .h6-eyebrow span {
+    display: none;
+  }
+  .h6-status {
+    font-size: 8px;
+    padding: 8px;
+    margin-top: 26px;
+  }
+  .h6-panel {
+    max-width: 310px;
+  }
+  .h6-device-area {
+    max-width: 410px;
+    margin: auto;
+  }
+  .h6-side-controls {
+    margin-bottom: 110px;
+  }
+  .h6-source {
+    grid-template-columns: 55px 1fr 35px;
+    gap: 8px;
+  }
+  .h6-large-screen {
+    max-width: 440px;
+  }
+  .h6-section-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+@container pd-simulator (max-width: 850px) {
+  .h6-workspace {
+    grid-template-columns: 1fr;
+  }
+  .h6-app {
+    padding: 24px 16px;
+  }
+  .h6-device-area {
+    max-width: 440px;
+    margin: auto;
+  }
+}

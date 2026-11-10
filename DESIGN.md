@@ -1,9 +1,10 @@
 # practicedesk collection
 
-Five static pages are built from independent npm workspaces: the practice library
+Six static pages are built from independent npm workspaces: the practice library
 at `/simulators/`, Mackie at `/simulators/mackie-profx22v3/`, and CineTreak at
 `/simulators/cinetreak-mixer-plus/`, Yamaha at `/simulators/yamaha-stagepas400i/`,
-and the MG10XU at `/simulators/yamaha-mg10xu/`.
+the MG10XU at `/simulators/yamaha-mg10xu/`, and the H6essential at
+`/simulators/zoom-h6essential/`.
 Native links and directory indexes support
 direct visits, refresh and browser history on GitHub Pages without an SPA router.
 
@@ -13,7 +14,7 @@ CineTreak IndexedDB database stay separate. Uploaded media stays in the browser.
 The new origin paths do not migrate media or settings from the old sites.
 
 `packages/ui` contains the single header and footer implementation used by all
-five pages. Their branding, spacing, navigation and content are consistent;
+six pages. Their branding, spacing, navigation and content are consistent;
 the current page gets an active navigation state. Page-specific help, sources
 and reset controls stay in each simulator's practice area. The shared shell accepts a colour theme without changing its layout or content.
 The Mackie and library pages use the light green theme; the video and STAGEPAS
@@ -57,3 +58,9 @@ separate reducer and Web Audio graph, all 24 approximated FX families, program
 selection/confirmation and USB monitoring/record-bus practice. It shares only the
 site shell and deployment, with its own versioned settings and session-only files.
 See `apps/yamaha-mg10xu/DESIGN.md` for its evidence and accuracy limits.
+
+The H6essential adds a photo-based six-channel recorder with side-dial navigation,
+recording/mixer/input states, marked takes, measured audio and float WAV downloads.
+Recordings are session-only; settings have their own versioned storage key.
+The supplied manual is bundled. See `apps/zoom-h6essential/DESIGN.md` for evidence,
+provisional behaviour and unsupported functions. This addition has not been deployed.

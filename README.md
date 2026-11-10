@@ -14,6 +14,7 @@ physical controls, and rehearse with built-in sources or your own local media.
 | CineTreak Mixer Plus | [Open simulator](https://hollag.github.io/simulators/cinetreak-mixer-plus/) | [Video mixer](apps/cinetreak-mixer-plus)      |
 | Yamaha STAGEPAS 400i | [Open simulator](https://hollag.github.io/simulators/yamaha-stagepas400i/)                                              | [Portable PA mixer](apps/yamaha-stagepas400i) |
 | Yamaha MG10XU | [Open simulator](https://hollag.github.io/simulators/yamaha-mg10xu/) | [Compact audio mixer](apps/yamaha-mg10xu) |
+| Zoom H6essential | Local build, not yet published | [Handy recorder](apps/zoom-h6essential) |
 
 ## Run locally
 
@@ -24,9 +25,10 @@ npm install
 npm run dev
 ```
 
-Open http://127.0.0.1:5300. The landing server connects the four simulators on ports
-5301–5304, with live reload. Stop all five servers using Ctrl+C.
+Open http://127.0.0.1:5300. The landing server connects the five simulators on ports
+5301–5305, with live reload. Stop all six servers using Ctrl+C.
 The MG10XU is at http://127.0.0.1:5300/yamaha-mg10xu/.
+The H6essential is at http://127.0.0.1:5300/zoom-h6essential/.
 
 ```text
 apps/
@@ -35,13 +37,14 @@ apps/
   cinetreak-mixer-plus/    Video switcher, compositor and menus
   yamaha-stagepas400i/     Portable PA, EQ, reverb and output routing
   yamaha-mg10xu/           Compact mixer, compression, FX and USB monitoring
+  zoom-h6essential/       Field recorder, mixer, takes and float WAV downloads
 packages/ui/              Shared practicedesk header and footer
 skill/                    Hardware Simulator Builder skill and resources
 scripts/                  Development, build and static preview
 ```
 
 Each simulator keeps its own state, engine, assets, tests and package versions.
-The shared UI provides consistent branding and navigation across all five pages.
+The shared UI provides consistent branding and navigation across all six pages.
 See the app READMEs for practice sequences and device-specific accuracy limits.
 
 All simulators have a **Split view** button above the desk to show the owner's
@@ -63,7 +66,7 @@ npm run preview
 ```
 
 Preview: http://127.0.0.1:4173/simulators/. The browser command runs each desk's
-existing suite, followed by tests of all five production pages and navigation.
+existing suite, followed by tests of all six production pages and navigation.
 Builds are combined into one `dist/`, with one folder per simulator.
 
 ## Build another simulator
@@ -77,7 +80,7 @@ the website. The copy is a snapshot of the local skill used for this project.
 ## Deployment
 
 [GitHub Actions](.github/workflows/pages.yml) installs from the root lockfile,
-runs each app's tests, builds the five pages, tests the combined site, then
+runs each app's tests, builds the six pages, tests the combined site, then
 deploys it to GitHub Pages. Pages must use GitHub Actions as its publishing source.
 The site root comes from Pages metadata through `SITE_BASE_PATH`; each app gets
 its own asset prefix. `VITE_SITE_BASE` keeps shared navigation pointed at the hub.

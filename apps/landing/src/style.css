@@ -459,6 +459,8 @@ p {
     display: none;
   }
 }
+.h6essential .simulator-image { background: #e8ece7; }
+.h6essential .simulator-image img { object-fit: contain; height: 100%; width: auto; mix-blend-mode: multiply; }
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

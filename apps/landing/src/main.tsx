@@ -15,6 +15,19 @@ import "./style.css";
 const base = import.meta.env.BASE_URL;
 const simulators = [
   {
+    slug: "zoom-h6essential",
+    number: "05",
+    name: "H6essential",
+    brand: "ZOOM",
+    type: "HANDY RECORDER",
+    image: "h6essential.jpg",
+    className: "h6essential",
+    Icon: AudioLines,
+    description: "Capture the moment. Arm your tracks, balance a headphone mix, and rehearse your next field recording.",
+    features: ["Six recording channels", "Mixer & input settings", "Marks & playback", "Float WAV downloads"],
+    detail: "XY capsule · 4 external inputs",
+  },
+  {
     slug: "yamaha-mg10xu",
     number: "04",
     name: "MG10XU",

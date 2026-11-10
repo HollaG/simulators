@@ -173,6 +173,7 @@ for (const path of [
   "cinetreak-mixer-plus/",
   "yamaha-stagepas400i/",
   "yamaha-mg10xu/",
+  "zoom-h6essential/",
 ]) {
   test(`consistent header/footer, readable layout and working navigation on ${path || "landing"}`, async ({
     page,

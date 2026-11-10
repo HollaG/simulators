@@ -11,6 +11,7 @@ const apps = [
   ["cinetreak-mixer-plus", 5302, "/cinetreak-mixer-plus/"],
   ["yamaha-stagepas400i", 5303, "/yamaha-stagepas400i/"],
   ["yamaha-mg10xu", 5304, "/yamaha-mg10xu/"],
+  ["zoom-h6essential", 5305, "/zoom-h6essential/"],
 ];
 let stopping = false;
 const stop = () => {
