@@ -116,7 +116,20 @@ test("real signal paths isolate USB return, keep recording pre-master, and mute 
       const direct = await read();
       s.stereoMute = true;
       const mutedDirect = await read();
-      s.inputs.ch1.kind = "tone";
+      // A second 1 kHz demo tone can cancel the USB tone depending on when
+      // its source starts. Use 2 kHz so this checks routing, not relative phase.
+      const reference = engine.context.createBuffer(
+        1,
+        engine.context.sampleRate,
+        engine.context.sampleRate,
+      );
+      const samples = reference.getChannelData(0);
+      for (let i = 0; i < samples.length; i++)
+        samples[i] = 0.06 * 10 ** (-26 / 20) *
+          Math.sin(2 * Math.PI * 2000 * i / reference.sampleRate);
+      engine.putFile("ch1", "routing-reference.wav", reference);
+      s.inputs.ch1.kind = "file";
+      s.inputs.ch1.filename = "routing-reference.wav";
       s.inputs.ch1.plug = "phone";
       s.channels[0].gain = 32;
       s.channels[0].level = 7.5;
