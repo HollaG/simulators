@@ -8,6 +8,9 @@ for (const [slug, title] of [
     page,
     request,
   }) => {
+    // Full-page screenshots also render the live WebGL desk. Match the device
+    // suite's 90-second allowance when Chromium uses software rendering in CI.
+    if (slug === "cinetreak-mixer-plus") test.slow();
     await page.goto(`${slug}/`);
     const split = page.getByRole("button", { name: "Split view", exact: true });
     const manual = page.getByRole("complementary", {
