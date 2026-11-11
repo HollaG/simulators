@@ -49,7 +49,7 @@ Versioned localStorage stores validated input/record/mixer settings. Takes, play
 - Takes are limited to 60 seconds each, eight takes per session, to bound browser memory; displayed capacity is the practice limit, not an SD-card estimate. Stopping on the limit is a simulator rule.
 - No USB interface, timecode/Bluetooth, alternate capsules, MS decode, pre-record, start tone, iXML, A–B repeat, normalization, speed adjustment, SD formatting, system/accessibility menus, or hardware file recovery. Omitted menu categories are visibly labelled unavailable.
 - Recording settings and source controls cannot change mid-take. Recording files remain in memory until reload/reset; downloads are the durable copy. Browser rendering adds a short save delay absent from real hardware.
-- No physical hardware comparison or deployment is included in this build request.
+- Physical hardware behaviour has not been compared against an owner's recorder.
 
 ## Completion checklist
 
@@ -61,4 +61,6 @@ Versioned localStorage stores validated input/record/mixer settings. Takes, play
 | Collection integration | All 55 repository logic tests and 12 combined-site browser tests passed; production build and TypeScript checks passed |
 | Firmware edge behaviour and analog/filter response | Provisional; no physical hardware comparison |
 | USB, wireless/timecode and omitted menu functions listed above | Unsupported and disclosed in the app |
-| Publication | Local implementation only |
+| Publication | GitHub Pages workflow 42951847230 passed all 55 logic tests and 55 browser tests; live recording, playback, WAV download, asset hashes, manual, mobile layout and navigation verified |
+
+Live URL: https://hollag.github.io/simulators/zoom-h6essential/

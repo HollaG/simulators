@@ -1,5 +1,7 @@
 # practicedesk
 
+**[Open the live H6essential simulator](https://hollag.github.io/simulators/zoom-h6essential/)**
+
 **[Open practicedesk](https://hollag.github.io/simulators/)**
 
 **[Open the live MG10XU simulator](https://hollag.github.io/simulators/yamaha-mg10xu/)**
@@ -14,7 +16,7 @@ physical controls, and rehearse with built-in sources or your own local media.
 | CineTreak Mixer Plus | [Open simulator](https://hollag.github.io/simulators/cinetreak-mixer-plus/) | [Video mixer](apps/cinetreak-mixer-plus)      |
 | Yamaha STAGEPAS 400i | [Open simulator](https://hollag.github.io/simulators/yamaha-stagepas400i/)                                              | [Portable PA mixer](apps/yamaha-stagepas400i) |
 | Yamaha MG10XU | [Open simulator](https://hollag.github.io/simulators/yamaha-mg10xu/) | [Compact audio mixer](apps/yamaha-mg10xu) |
-| Zoom H6essential | Local build, not yet published | [Handy recorder](apps/zoom-h6essential) |
+| Zoom H6essential | [Open simulator](https://hollag.github.io/simulators/zoom-h6essential/) | [Handy recorder](apps/zoom-h6essential) |
 
 ## Run locally
 

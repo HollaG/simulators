@@ -1,5 +1,7 @@
 # Zoom H6essential
 
+**[Open the live simulator](https://hollag.github.io/simulators/zoom-h6essential/)**
+
 Photo-based recording practice in the practicedesk collection. Built from the supplied 142-page operation manual and front-panel image; see [DESIGN.md](DESIGN.md) for page evidence and accuracy limits.
 
 From the repository root:
@@ -9,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open **http://127.0.0.1:5300/zoom-h6essential/**. This addition has not been published.
+Open **http://127.0.0.1:5300/zoom-h6essential/** for local development.
 
 ## First take
 

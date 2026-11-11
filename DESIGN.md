@@ -63,4 +63,5 @@ The H6essential adds a photo-based six-channel recorder with side-dial navigatio
 recording/mixer/input states, marked takes, measured audio and float WAV downloads.
 Recordings are session-only; settings have their own versioned storage key.
 The supplied manual is bundled. See `apps/zoom-h6essential/DESIGN.md` for evidence,
-provisional behaviour and unsupported functions. This addition has not been deployed.
+provisional behaviour and unsupported functions. The simulator is published at
+`https://hollag.github.io/simulators/zoom-h6essential/`.
