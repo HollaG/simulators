@@ -12,6 +12,7 @@ const apps = [
   ["yamaha-stagepas400i", 5303, "/yamaha-stagepas400i/"],
   ["yamaha-mg10xu", 5304, "/yamaha-mg10xu/"],
   ["zoom-h6essential", 5305, "/zoom-h6essential/"],
+  ["nanlite-fc120b", 5306, "/nanlite-fc120b/"],
 ];
 let stopping = false;
 const stop = () => {

@@ -174,6 +174,7 @@ for (const path of [
   "yamaha-stagepas400i/",
   "yamaha-mg10xu/",
   "zoom-h6essential/",
+  "nanlite-fc120b/",
 ]) {
   test(`consistent header/footer, readable layout and working navigation on ${path || "landing"}`, async ({
     page,

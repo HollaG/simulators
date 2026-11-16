@@ -1,0 +1,30 @@
+import { expect, test } from "@playwright/test";
+
+test("FC-120B opens from the library with prefixed assets, working controls and the bundled manual", async ({ page, request }) => {
+  const errors: string[] = [];
+  page.on("pageerror", e => errors.push(e.message));
+  page.on("response", r => { if (r.url().includes("127.0.0.1:4173") && r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
+  await page.goto("./");
+  await page.getByRole("link", { name: "Open NANLITE FC-120B simulator", exact: true }).click();
+  await expect(page).toHaveURL(/\/simulators\/nanlite-fc120b\/$/);
+  await expect(page.getByRole("heading", { name: "NANLITE FC-120B", exact: true })).toBeVisible();
+  expect(await page.locator(".fc-panel > img").evaluate((img: HTMLImageElement) => img.naturalWidth)).toBe(500);
+  const pdf = await request.get("nanlite-fc120b/manual.pdf");
+  expect(pdf.ok()).toBe(true); expect((await pdf.body()).subarray(0, 5).toString()).toBe("%PDF-");
+  await page.getByRole("button", { name: "Fixture power", exact: true }).click();
+  await page.getByRole("button", { name: "Right knob", exact: true }).click();
+  const lcd = page.getByRole("img", { name: "Enlarged device display", exact: true });
+  await expect(lcd).toContainText("6500K");
+  await expect.poll(async () => Number(await page.locator("canvas").getAttribute("data-level"))).toBeGreaterThan(0);
+  await page.getByRole("button", { name: "Split view", exact: true }).click();
+  await expect(page.getByTitle("Nanlite FC-120B PDF manual", { exact: true })).toBeVisible();
+  await expect(lcd).toContainText("6500K");
+  await page.getByRole("button", { name: "Close manual", exact: true }).click();
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Fixture power", exact: true })).toHaveAttribute("aria-pressed", "false");
+  await page.getByRole("button", { name: "Fixture power", exact: true }).click();
+  await expect(lcd).toContainText("6500K");
+  await page.getByRole("link", { name: "Practice desk home", exact: true }).click();
+  await expect(page).toHaveURL(/\/simulators\/$/);
+  expect(errors).toEqual([]);
+});

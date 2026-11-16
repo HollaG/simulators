@@ -6,7 +6,7 @@
 
 **[Open the live MG10XU simulator](https://hollag.github.io/simulators/yamaha-mg10xu/)**
 
-Browser practice simulators for audio and video hardware. Pick a desk, explore its
+Browser practice simulators for audio, video and lighting hardware. Pick a desk, explore its
 physical controls, and rehearse with built-in sources or your own local media.
 
 | Desk                 | Live page                                                                   | Source                                        |
@@ -17,6 +17,7 @@ physical controls, and rehearse with built-in sources or your own local media.
 | Yamaha STAGEPAS 400i | [Open simulator](https://hollag.github.io/simulators/yamaha-stagepas400i/)                                              | [Portable PA mixer](apps/yamaha-stagepas400i) |
 | Yamaha MG10XU | [Open simulator](https://hollag.github.io/simulators/yamaha-mg10xu/) | [Compact audio mixer](apps/yamaha-mg10xu) |
 | Zoom H6essential | [Open simulator](https://hollag.github.io/simulators/zoom-h6essential/) | [Handy recorder](apps/zoom-h6essential) |
+| Nanlite FC-120B | Local implementation; not published | [Bi-color light](apps/nanlite-fc120b) |
 
 ## Run locally
 
@@ -27,10 +28,11 @@ npm install
 npm run dev
 ```
 
-Open http://127.0.0.1:5300. The landing server connects the five simulators on ports
-5301–5305, with live reload. Stop all six servers using Ctrl+C.
+Open http://127.0.0.1:5300. The landing server connects the six simulators on ports
+5301–5306, with live reload. Stop all seven servers using Ctrl+C.
 The MG10XU is at http://127.0.0.1:5300/yamaha-mg10xu/.
 The H6essential is at http://127.0.0.1:5300/zoom-h6essential/.
+The FC-120B is at http://127.0.0.1:5300/nanlite-fc120b/.
 
 ```text
 apps/
@@ -40,13 +42,14 @@ apps/
   yamaha-stagepas400i/     Portable PA, EQ, reverb and output routing
   yamaha-mg10xu/           Compact mixer, compression, FX and USB monitoring
   zoom-h6essential/       Field recorder, mixer, takes and float WAV downloads
+  nanlite-fc120b/         Bi-color light, effects, rear-panel menus and output preview
 packages/ui/              Shared practicedesk header and footer
 skill/                    Hardware Simulator Builder skill and resources
 scripts/                  Development, build and static preview
 ```
 
 Each simulator keeps its own state, engine, assets, tests and package versions.
-The shared UI provides consistent branding and navigation across all six pages.
+The shared UI provides consistent branding and navigation across all seven pages.
 See the app READMEs for practice sequences and device-specific accuracy limits.
 
 All simulators have a **Split view** button above the desk to show the owner's
@@ -68,7 +71,7 @@ npm run preview
 ```
 
 Preview: http://127.0.0.1:4173/simulators/. The browser command runs each desk's
-existing suite, followed by tests of all six production pages and navigation.
+existing suite, followed by tests of all seven production pages and navigation.
 Builds are combined into one `dist/`, with one folder per simulator.
 
 ## Build another simulator
@@ -82,7 +85,7 @@ the website. The copy is a snapshot of the local skill used for this project.
 ## Deployment
 
 [GitHub Actions](.github/workflows/pages.yml) installs from the root lockfile,
-runs each app's tests, builds the six pages, tests the combined site, then
+runs each app's tests, builds the seven pages, tests the combined site, then
 deploys it to GitHub Pages. Pages must use GitHub Actions as its publishing source.
 The site root comes from Pages metadata through `SITE_BASE_PATH`; each app gets
 its own asset prefix. `VITE_SITE_BASE` keeps shared navigation pointed at the hub.

@@ -460,6 +460,8 @@ p {
   }
 }
 .h6essential .simulator-image { background: #e8ece7; }
+.fc120b .simulator-image { background: #e5e9e5; }
+.fc120b .simulator-image img { object-fit: contain; height: 100%; width: auto; mix-blend-mode: multiply; }
 .h6essential .simulator-image img { object-fit: contain; height: 100%; width: auto; mix-blend-mode: multiply; }
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -1,10 +1,10 @@
 # practicedesk collection
 
-Six static pages are built from independent npm workspaces: the practice library
+Seven static pages are built from independent npm workspaces: the practice library
 at `/simulators/`, Mackie at `/simulators/mackie-profx22v3/`, and CineTreak at
 `/simulators/cinetreak-mixer-plus/`, Yamaha at `/simulators/yamaha-stagepas400i/`,
 the MG10XU at `/simulators/yamaha-mg10xu/`, and the H6essential at
-`/simulators/zoom-h6essential/`.
+`/simulators/zoom-h6essential/`, and the FC-120B at `/simulators/nanlite-fc120b/`.
 Native links and directory indexes support
 direct visits, refresh and browser history on GitHub Pages without an SPA router.
 
@@ -14,7 +14,7 @@ CineTreak IndexedDB database stay separate. Uploaded media stays in the browser.
 The new origin paths do not migrate media or settings from the old sites.
 
 `packages/ui` contains the single header and footer implementation used by all
-six pages. Their branding, spacing, navigation and content are consistent;
+seven pages. Their branding, spacing, navigation and content are consistent;
 the current page gets an active navigation state. Page-specific help, sources
 and reset controls stay in each simulator's practice area. The shared shell accepts a colour theme without changing its layout or content.
 The Mackie and library pages use the light green theme; the video and STAGEPAS
@@ -65,3 +65,10 @@ Recordings are session-only; settings have their own versioned storage key.
 The supplied manual is bundled. See `apps/zoom-h6essential/DESIGN.md` for evidence,
 provisional behaviour and unsupported functions. The simulator is published at
 `https://hollag.github.io/simulators/zoom-h6essential/`.
+
+The FC-120B adds the supplied rear-panel photograph, a live LCD, two rotary/push
+controls, CCT/dimming, effects and onboard settings. Its canvas preview samples
+deterministic illustrative light signals, including manual triggers and documented
+fan power caps. Stable settings use an independent storage key; power and trigger
+timing are transient. DMX/radio navigation does not connect hardware. See
+`apps/nanlite-fc120b/DESIGN.md` for manual evidence and provisional behaviour.

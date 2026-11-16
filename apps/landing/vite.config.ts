@@ -10,6 +10,7 @@ export default defineConfig({
       "/yamaha-stagepas400i": "http://127.0.0.1:5303",
       "/yamaha-mg10xu": "http://127.0.0.1:5304",
       "/zoom-h6essential": "http://127.0.0.1:5305",
+      "/nanlite-fc120b": "http://127.0.0.1:5306",
     },
   },
 });

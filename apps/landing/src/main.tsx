@@ -4,6 +4,7 @@ import {
   ArrowDown,
   ArrowUpRight,
   AudioLines,
+  Lightbulb,
   Check,
   Code2,
   MousePointer2,
@@ -14,6 +15,19 @@ import "./style.css";
 
 const base = import.meta.env.BASE_URL;
 const simulators = [
+  {
+    slug: "nanlite-fc120b",
+    number: "06",
+    name: "FC-120B",
+    brand: "NANLITE",
+    type: "BI-COLOR LIGHT",
+    image: "fc120b.webp",
+    className: "fc120b",
+    Icon: Lightbulb,
+    description: "Find your light. Practise colour temperature, dimming, lighting effects, and the onboard settings menu.",
+    features: ["CCT & dimming", "14 effect entries", "Manual triggers", "Rear-panel menus"],
+    detail: "2700–6500K · Two control dials",
+  },
   {
     slug: "zoom-h6essential",
     number: "05",
@@ -110,7 +124,7 @@ function Landing() {
             </h1>
             <p>
               The desk might be unfamiliar. The next show doesn’t have to be.
-              <br className="desktop-break" /> Get hands-on with audio and video
+              <br className="desktop-break" /> Get hands-on with audio, video and lighting
               hardware, right in your browser.
             </p>
             <a className="home-button" href="#simulators">

@@ -1,7 +1,7 @@
 import { useRef, useState, type ReactNode } from "react";
 import "./style.css";
 
-export type SitePage = "home" | "mackie" | "cinetreak" | "stagepas" | "mg10xu" | "h6essential";
+export type SitePage = "home" | "mackie" | "cinetreak" | "stagepas" | "mg10xu" | "h6essential" | "fc120b";
 export const SOURCE_URL = "https://github.com/HollaG/simulators";
 
 /** Every page uses this shell. Pass the site's root, not the simulator's asset base,
@@ -77,6 +77,9 @@ export function SiteLayout({
           </a>
           <a href={`${root}zoom-h6essential/`} aria-current={page === "h6essential" ? "page" : undefined}>
             H6essential
+          </a>
+          <a href={`${root}nanlite-fc120b/`} aria-current={page === "fc120b" ? "page" : undefined}>
+            FC-120B
           </a>
           <a
             className="pd-source"

@@ -13,6 +13,7 @@ const apps = [
   ["yamaha-stagepas400i", "stagepas400i-simulator", "yamaha-stagepas400i/"],
   ["yamaha-mg10xu", "mg10xu-simulator", "yamaha-mg10xu/"],
   ["zoom-h6essential", "h6essential-simulator", "zoom-h6essential/"],
+  ["nanlite-fc120b", "fc120b-simulator", "nanlite-fc120b/"],
 ];
 if (!process.env.npm_execpath) throw new Error("Run this with npm run build.");
 if (dirname(output) !== root.replace(/[\\/]$/, ""))
