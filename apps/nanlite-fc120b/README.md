@@ -1,5 +1,7 @@
 # Nanlite FC-120B
 
+**[Open the live simulator](https://hollag.github.io/simulators/nanlite-fc120b/)**
+
 Photo-based rear-panel practice simulator using the supplied English owner manual.
 Includes CCT/dimming, five CCT presets, blackout/restore, all 14 effect entries,
 manual storm/explosion triggers and onboard settings. The enlarged LCD mirrors
@@ -35,6 +37,10 @@ rotation, persistence and storage failures. Desktop and 390/760px screenshots
 inspected. The combined site has a production-prefix route/asset/manual test.
 Repository verification passed: all 81 logic tests, the full combined build and
 14 production-site browser tests. The development hub proxy was also exercised.
+GitHub Pages workflow [43879541055](https://github.com/HollaG/simulators/actions/runs/43879541055)
+passed the full collection's checks and deployed successfully. Live checks covered
+the library link, photo/PDF assets, CCT/presets, wheel input, blackout/restore,
+output, fan caps, effects, manual split view, persistence, mobile layout and home.
 
 ```sh
 npm run test --workspace=fc120b-simulator

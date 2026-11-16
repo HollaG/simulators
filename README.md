@@ -1,5 +1,7 @@
 # practicedesk
 
+**[Open the live FC-120B simulator](https://hollag.github.io/simulators/nanlite-fc120b/)**
+
 **[Open the live H6essential simulator](https://hollag.github.io/simulators/zoom-h6essential/)**
 
 **[Open practicedesk](https://hollag.github.io/simulators/)**
@@ -17,7 +19,7 @@ physical controls, and rehearse with built-in sources or your own local media.
 | Yamaha STAGEPAS 400i | [Open simulator](https://hollag.github.io/simulators/yamaha-stagepas400i/)                                              | [Portable PA mixer](apps/yamaha-stagepas400i) |
 | Yamaha MG10XU | [Open simulator](https://hollag.github.io/simulators/yamaha-mg10xu/) | [Compact audio mixer](apps/yamaha-mg10xu) |
 | Zoom H6essential | [Open simulator](https://hollag.github.io/simulators/zoom-h6essential/) | [Handy recorder](apps/zoom-h6essential) |
-| Nanlite FC-120B | Local implementation; not published | [Bi-color light](apps/nanlite-fc120b) |
+| Nanlite FC-120B | [Open simulator](https://hollag.github.io/simulators/nanlite-fc120b/) | [Bi-color light](apps/nanlite-fc120b) |
 
 ## Run locally
 
